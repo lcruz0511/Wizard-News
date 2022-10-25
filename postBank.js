@@ -1,3 +1,6 @@
+var timeAgo = require('node-time-ago');
+
+
 const data = [
   {
     id: 1,
@@ -6,7 +9,7 @@ const data = [
     content:
       "Fianto Duri is a charm that was created to be combined with protective spells (Can be used with another person's shield spell)(When used on something else creates a explosion). As we already knows the (i.e.) Shield Charm needs the caster to stay focused on the spell in order to continue protecting him, so Fianto Duri allows the caster to keep a charm “alive” while he does some other work or casts some other spells.",
     name: "RubeusH",
-    date: new Date(Date.now() - 15000000),
+    date: timeAgo(new Date(Date.now() - 15000000)),
   },
   {
     id: 2,
