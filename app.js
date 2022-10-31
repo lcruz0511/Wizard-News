@@ -1,70 +1,18 @@
 const express = require("express");
 const morgan = require("morgan");
-const postBank = require("./postBank");
-const postList = require("./views/postList");
-const postDetails = require("./views/postDetails");
 
 const app = express();
 
 app.use(morgan("dev"));
 app.use(express.static(__dirname + "/public"));
 
+//-----------------POST ROUTER----------------------
 
-//--------WORKING W/ postListRouter.js-----------
 const postRouter = require("./views/postRouter");
 app.use("/", postRouter);
-//-----------------------------------------------
-
-const postDetailsRouter = require("./views/postDetailsRouter");
-app.use("/:id", postDetailsRouter);
 
 
-
-
-//--------WORKING W/ postList.js-----------------
-// app.get("/", (req, res) => {
-//   const posts = postBank.list();
-//   res.send(postList(posts));
-// });
-//-----------------------------------------------
-
-
-
-// app.get("/posts/:id", (req, res) => {
-//   const posts = postBank.find(req.params.id);
-//   res.send(postDetails(posts));
-// });
-
-
-
-//----------------Original /posts/:id-----------------
-// app.get('/posts/:id', (req, res) => {
-//   const id = req.params.id;
-//   const post = postBank.find(id);
-
-//   if (!post.id) {
-//     throw new Error('Not found')
-//   }
-
-//   res.send(`<!DOCTYPE html>
-//   <html>
-//     <head>
-//       <title>Wizard News</title>
-//       <link rel="stylesheet" href="/style.css" />
-//     </head>
-//       <body>
-//         <div class="news-list">
-//           <header><img src="/logo.png"/>Wizard News</header>
-//           <p><span>${post.title}</span>
-//           <small>(by ${post.name})</small></p>
-//           <div>${post.content}</div>
-//         </div>
-//       </body>
-//       </html>`);
-// });
-//----------------------------------------------------------------
-
-//-----------------ERROR ROUTES WORKING FINE----------------------
+//-----------------ERROR ROUTES----------------------
 
 
 app.get("*", (req, res) => {
